@@ -11,7 +11,7 @@ if(!isset($argv[1])) exit('cara pakai: php '.basename(__FILE__).' [namafile]'.PH
 
 if(!file_exists($argv[1])) exit($argv[1].' tidak ada'.PHP_EOL);
 
-$namafile = $argv[1];
+$namafile = basename($argv[1]);
 $kode = base64_encode(file_get_contents($argv[1]));
 
 $data = [
@@ -19,8 +19,8 @@ $data = [
 'kode'=>$kode,
 ];
 
-#$url = 'https://bot-pendaftaran.herokuapp.com/file_builder.php';
-$url = 'http://localhost:8080';
+$url = 'https://bot-pendaftaran.herokuapp.com/builder/index.php';
+#$url = 'http://localhost:8080';
 $data = http_build_query($data);
 
 $opts=[
